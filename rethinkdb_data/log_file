@@ -1,0 +1,23 @@
+2018-10-03T16:02:37.394554000 0.042088s notice: Recursively removing directory /Users/dre/projects/electron/electron-webpack-quick-start/rethinkdb_data/tmp
+2018-10-03T16:02:37.396339000 0.043876s notice: Initializing directory /Users/dre/projects/electron/electron-webpack-quick-start/rethinkdb_data
+2018-10-03T16:02:37.396455000 0.043988s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/dre/projects/electron/electron-webpack-quick-start/rethinkdb_data' did not already exist or is empty.)
+2018-10-03T16:02:37.396501000 0.044034s notice: Running rethinkdb 2.3.6 (CLANG 8.1.0 (clang-802.0.42))...
+2018-10-03T16:02:37.400978000 0.048512s notice: Running on Darwin 17.7.0 x86_64
+2018-10-03T16:02:37.401043000 0.048577s notice: Loading data from directory /Users/dre/projects/electron/electron-webpack-quick-start/rethinkdb_data
+2018-10-03T16:02:37.562138000 0.209674s info: Automatically using cache size of 4658 MB
+2018-10-03T16:02:37.562797000 0.210333s notice: Listening for intracluster connections on port 29015
+2018-10-03T16:02:37.565470000 0.213006s notice: Listening for client driver connections on port 28015
+2018-10-03T16:02:37.565699000 0.213235s notice: Listening for administrative HTTP connections on port 8080
+2018-10-03T16:02:37.565710000 0.213246s notice: Listening on cluster addresses: 127.0.0.1, ::1
+2018-10-03T16:02:37.565719000 0.213255s notice: Listening on driver addresses: 127.0.0.1, ::1
+2018-10-03T16:02:37.565722000 0.213258s notice: Listening on http addresses: 127.0.0.1, ::1
+2018-10-03T16:02:37.565731000 0.213266s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2018-10-03T16:02:37.565739000 0.213275s notice: Server ready, "derputer_y4v" e3b3d8ee-9c0e-43a8-9d81-05d926fbe332
+2018-10-03T16:02:47.001136000 9.648802s info: Table f5deb861-a2f6-40b0-b26e-1c9214edca9c: Starting a new Raft election for term 1.
+2018-10-03T16:02:47.001752000 9.649418s info: Table f5deb861-a2f6-40b0-b26e-1c9214edca9c: Added replica on this server.
+2018-10-03T16:02:47.034250000 9.681916s info: Table f5deb861-a2f6-40b0-b26e-1c9214edca9c: This server is Raft leader for term 1. Latest log index is 0.
+2018-10-03T16:03:46.932372000 69.580863s notice: Removing file /Users/dre/projects/electron/electron-webpack-quick-start/rethinkdb_data/f5deb861-a2f6-40b0-b26e-1c9214edca9c
+2018-10-03T16:03:46.932382000 69.580873s info: Table f5deb861-a2f6-40b0-b26e-1c9214edca9c: Deleted the table.
+2018-10-03T16:04:22.841021000 105.490006s info: Table ad590af4-3054-4008-beb7-8e0e8a270384: Starting a new Raft election for term 1.
+2018-10-03T16:04:22.841291000 105.490276s info: Table ad590af4-3054-4008-beb7-8e0e8a270384: Added replica on this server.
+2018-10-03T16:04:22.874573000 105.523559s info: Table ad590af4-3054-4008-beb7-8e0e8a270384: This server is Raft leader for term 1. Latest log index is 0.

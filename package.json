@@ -1,0 +1,44 @@
+{
+  "name": "electron-webpack-quick-start",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "rebuild": "electron-rebuild",
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
+  },
+  "dependencies": {
+    "colors": "^1.3.2",
+    "lodash": "^4.17.11",
+    "npos": "^0.1.19",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "rethinkdb": "^2.3.3",
+    "serialport": "^7.0.2",
+    "source-map-support": "^0.5.9"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "electron": "2.0.7",
+    "electron-builder": "^20.28.1",
+    "electron-rebuild": "^1.8.2",
+    "electron-webpack": "2.3.1",
+    "webpack": "^4.20.2"
+  },
+  "resolutions": {
+    "upath": "^1.0.5"
+  },
+  "electronWebpack": {
+    "main": {
+      "sourceDirectory": "src/main",
+      "webpackConfig": "webpack.main.config.js"
+    },
+    "renderer": {
+      "sourceDirectory": "src/renderer",
+      "webpackConfig": "webpack.renderer.config.js"
+    }
+  }
+}
