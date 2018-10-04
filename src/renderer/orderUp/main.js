@@ -8,8 +8,6 @@ const SerialPort = require('serialport');
 const r = require('rethinkdb');
 const listen = require('./listen');
 
-console.log('hello from main')
-
 r.connect({
   host: dbHost,
   port:dbPort

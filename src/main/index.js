@@ -3,15 +3,19 @@
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
+import { ipcMain } from 'electron'
 
-const main = require('./orderUp/main')
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
 
-function createMainWindow() {
+ipcMain.on('mock-new-order', (event, arg) => {
+  console.log(arg)
+})
+
+const createMainWindow = () => {
   const window = new BrowserWindow()
 
   if (isDevelopment) {
@@ -19,9 +23,13 @@ function createMainWindow() {
   }
 
   if (isDevelopment) {
+    // console.log(`__dirname is ${__dirname}`) // ==> src/main
+    // console.log(`${JSON.stringify(process.env)}`) 
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
   }
   else {
+    // 'index.html' file is dynamically created by electron-webpack 
+    // using the 'html-webpack-plugin'. it's magic to me at this stage
     window.loadURL(formatUrl({
       pathname: path.join(__dirname, 'index.html'),
       protocol: 'file',
@@ -39,7 +47,6 @@ function createMainWindow() {
       window.focus()
     })
   })
-
   return window
 }
 
