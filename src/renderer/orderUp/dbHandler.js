@@ -7,19 +7,18 @@ const r = require('rethinkdb');
 const { ipcRenderer } = require('electron')
 
 // ------------------------------------------------------------
-exports.insertSingleOrder = insertSingleOrder; 
-exports.insertManyOrders = insertManyOrders; 
-exports.changeFeed = changeFeed;
+// exports.insertSingleOrder = insertSingleOrder; 
+// exports.insertManyOrders = insertManyOrders; 
+// exports.changeFeed = changeFeed;
 // ------------------------------------------------------------
 
-// setInterval(() => {
-//   ipcRenderer.send('mock-new-order', {blah:'yadda'})
-// }, 2000)
 
 // subscribe to the necessary changefeeds in rethink, then 
 // send changes to main via ipcRenderer
-function changeFeed() {
-
+// => change details
+// db = 'OrderUp'
+// table = 'orders
+exports.changeFeed = () => {
   console.log('changeFeed called')
 
   r.connect({
@@ -30,11 +29,17 @@ function changeFeed() {
     r.db(dbName).table(dbTableName)
       .changes()
       .run(conn)
-      .then(cursor=> {
-        cursor.each(console.log)
+      .then(cursor => {
+        // cursor.each(console.log);
+        cursor.each((err, row) => {
+          if (err) throw err;
+
+          // send the row to main process via IPC 
+          ipcRenderer.send('change-in-orders-table', row);
+        });
       })
       .catch(err => {
-        console.log('ERROR CHANGEFEED: ', err) 
+        if (err) throw err;
       });
   })
   .catch(err => {
@@ -42,7 +47,7 @@ function changeFeed() {
   });
 };
 
-function insertSingleOrder(order) {
+exports.insertSingleOrder = (order) => {
   // rethinkdb expects an Object to insert
 
   console.log('in insertSingleOrder... order is:');
@@ -71,7 +76,7 @@ function insertSingleOrder(order) {
   });
 }
 
-function insertManyOrders(orders) {
+exports.insertManyOrders = (orders) => {
   //orders is an array of arrays of strings
   //[['blah','yadda',...,'foo'], ['blah', 'yadda',...,'foo'],....]
   console.log('heeloo from insertManyOrders');

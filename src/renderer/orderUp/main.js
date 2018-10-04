@@ -7,6 +7,7 @@ const serialManufacturer = globalConfig['SERIAL_MANUFACTURER'];
 const SerialPort = require('serialport');
 const r = require('rethinkdb');
 const listen = require('./listen');
+const dbHandler = require('./dbHandler')
 
 r.connect({
   host: dbHost,
@@ -69,6 +70,7 @@ function createOrderUpTable (conn) {
   r.db(dbName).tableCreate(dbTableName).run(conn)
     .then(result => {
       console.log('SUCCESS: created the ', dbTableName, ' table');
+
       startListeningToSerialPort(conn);
     })
     .catch(err => {
@@ -82,6 +84,10 @@ function startListeningToSerialPort (conn) {
       console.log('PORTS AVAILABLE: ', ports);
       const port = ports.filter(port => port.manufacturer === serialManufacturer)[0];
       if (port) {
+        // setup rethink changefeed for 'orders' table in 'OrderUp' db
+        dbHandler.changeFeed();
+
+        // start listeng on serial port for orders
         listen.startListening();
       }
     })

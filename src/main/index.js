@@ -11,8 +11,12 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow
 
-ipcMain.on('mock-new-order', (event, arg) => {
-  console.log(arg)
+// any changes to the 'orders' table are sent on this channel to main process
+ipcMain.on('change-in-orders-table', (event, arg) => {
+  console.log('IPC MAIN:on \'change-in-orders-table\' event. Data:', arg)
+
+  // TODO: send out changes to all windows.
+  // Q: how does this link up with client React/Redux app??
 })
 
 const createMainWindow = () => {
